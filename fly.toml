@@ -27,6 +27,9 @@ VIEW_DISTANCE = "16"
 ENABLE_WHITELIST = "false"
 WHITELIST = "lily_c3"
 
+CREATE_CONSOLE_IN_PIPE = "true"
+DUMP_SERVER_PROPERTIES = "true"
+
 [[metrics]]
 path = "/"
 port = 19_565
