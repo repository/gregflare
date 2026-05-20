@@ -1,0 +1,65 @@
+app = "gregflare"
+kill_signal = "SIGTERM"
+kill_timeout = "5m0s"
+primary_region = "ewr"
+
+[deploy]
+strategy = "immediate"
+
+[env]
+EULA = "true"
+
+TYPE = "GTNH"
+GTNH_PACK_PATH = "/image/packs/gtnh-server.zip"
+SKIP_GTNH_UPDATE_CHECK = "false"
+
+USES_MODS = "true"
+MODS = "https://github.com/cpburnz/minecraft-prometheus-exporter/releases/download/1.7.10-forge-1.3.0/Prometheus-Exporter-1.7.10-forge-1.3.0.jar"
+
+MEMORY = "8500M"
+USE_MEOWICE_FLAGS = "true"
+USE_MEOWICE_GRAALVM_FLAGS = "true"
+
+MOTD = "gregflare"
+SPAWN_PROTECTION = "0"
+VIEW_DISTANCE = "16"
+
+ENABLE_WHITELIST = "false"
+WHITELIST = "lily_c3"
+
+[[metrics]]
+path = "/"
+port = 19_565
+
+[[mounts]]
+auto_extend_size_increment = "1GB"
+auto_extend_size_limit = "50GB"
+auto_extend_size_threshold = 90
+destination = "/data"
+initial_size = "4GB"
+source = "data"
+
+[[restart]]
+policy = "always"
+retries = 999_999_999
+
+
+[[services]]
+auto_start_machines = true
+auto_stop_machines = "off"
+internal_port = 25_565
+min_machines_running = 0
+protocol = "tcp"
+
+[[services.ports]]
+port = 44_414
+
+[[services.tcp_checks]]
+grace_period = "60s"
+interval = "15s"
+timeout = "5s"
+
+[[vm]]
+cpu_kind = "performance"
+cpus = 2
+memory = "10GB"
